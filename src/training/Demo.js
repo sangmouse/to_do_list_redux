@@ -1,31 +1,9 @@
 // đầu tiên tạo ra cái Store, để quản lý tất cả các State của app
 import {createStore} from 'redux'
 import {status, sort} from './actions/index'
+import myReducer from './reducers/index'
 
 
-// 1: khởi tạo state  ban đầu
-var initialState = {
-    status: false,
-    sort:{
-        by:'name',
-        value:1
-    }
-}
-// 4: tạo ra reducer để nhận vào action, state
-var myReducer = (state = initialState, action) =>{
-    if(action.type === 'TOGGLE_STATUS'){
-        state.status = !state.status
-        return state
-    }
-    else if(action.type === 'SORT'){
-        state.sort = {
-            by: action.sort.by,
-            value:action.sort.value
-        }
-        return state
-    }
-    return state
-}
 // 5: khởi tạo store, truyền reducer vào store
 const store  = createStore(myReducer)
 
